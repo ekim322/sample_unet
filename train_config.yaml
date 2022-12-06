@@ -1,0 +1,13 @@
+exp_name: 'batch2_diceFocal_gamma5_widerCrop_exp2'
+lr: 0.01
+epochs: 1000
+batch_size: 16
+img_size: 224
+patience: 100
+
+train_csv_path: '../data/seg_data/train_paths.csv'
+val_csv_path: '../data/seg_data/val_paths.csv'
+
+model_load_path: 
+cont_epoch: 
+model_save_root: 'saved_models'
