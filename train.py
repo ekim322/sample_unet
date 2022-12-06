@@ -1,4 +1,4 @@
-from math import gamma
+import argparse
 import os
 import yaml
 from tqdm import tqdm
@@ -10,10 +10,8 @@ from dataset import SegmentationDataset
 from model import Unet
 from loss import FocalLoss, dice_loss
 
-class Args():
-    def __init__(self):
-        self.config = 'train_config.yaml'
-args = Args()
+parser = argparse.ArgumentParser()
+parser.add_argument('--config', default='train_config.yaml', type=str)
 
 device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
 
@@ -114,6 +112,8 @@ def train_model(model, cfg):
                 break
 
 if __name__=='__main__':
+    args = parser.parse_args()
+    
     with open(args.config, 'r') as stream:
         try:
             cfg = yaml.safe_load(stream)
